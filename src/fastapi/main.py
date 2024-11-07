@@ -9,10 +9,8 @@ async def print_task(s):
              
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Run at startup
     asyncio.create_task(print_task(5))
     yield
-    # Run on shutdown (if required)
     print('Shutting down...')
     
 app = FastAPI(lifespan=lifespan)
